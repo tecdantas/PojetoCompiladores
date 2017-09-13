@@ -14,11 +14,14 @@ tokens
   TK_class
 }
 
+
 OPEN_PAREN : '(';
 CLOSE_PAREN : ')';
 
 LCURLY : '{';
 RCURLY : '}';
+
+
 
 ID  : ('a'..'z' | 'A'..'Z')+;
 
@@ -26,33 +29,23 @@ WS_ : (' ' | '\n' ) -> skip;
 
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
 
-CHAR : '\'' (ESC|~'\'') '\'';
+CHAR : ']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\';
 
 STRING : '"' (ESC|~'"')* '"';
 
-PR_BOOLEAN : 'boolean';
-PR_BREAK : 'break';
-PR_CALLOUT : 'callout';
-PR_CLASS : 'class';
-PR_CONTINUE : 'continue';
-PR_IF : 'if';
-PR_ELSE : 'else';
-PR_FALSE : 'false';
-PR_FOR : 'for';
-PR_INT : 'int';
-PR_FLOAT : 'float';
-PR_RETURN : 'return';
-PR_TRUE : 'true';
-PR_VOID : 'void';
+P_RESERV :  ('boolean' | 'break' | 'callout' | 'class' | 'continue' | 'if' | 'else' | 'false' | 'for' | 'int' | 'float' | 'return' | 'true' | 'void');
 
-OP_ADD : '+';
-OP_SUB : '-';
-OP_MUL : '*';
-OP_DIV : '/';
+OP_ARITMETICOS : ('+' | '-' | '*' | '/');
 
-NUMERO : [0-9]+;
+OP_RELACIONAIS : ('<' | '>' | '<=' | '>=' | '==' | '!=');
 
+OP_ATRIBUICAO : ('=');
 
+DELIMITADORES : ';' | ',';
+
+NUMINT : [0-9]+ | NUMHEX;
+
+NUMHEX : '0'[xX][0-9a-fA-F]+;
 
 fragment
-ESC :  '\\' ('n'|'"');
+ESC : '\\' ('n'|'"');

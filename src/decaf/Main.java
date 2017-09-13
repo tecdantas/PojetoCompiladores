@@ -40,9 +40,18 @@ class Main {
 						case DecafLexer.STRING:
 		        				type = " STRING";
 		        				break;
-						case DecafLexer.NUMERO:
-		        				type = " NUMERO";
+						case DecafLexer.NUMHEX:
+							type = " HEXLITERAL ";
+							break;
+						case DecafLexer.NUMINT:
+		        				type = " INTLITERAL";
 		        				break;
+						case DecafLexer.SL_COMMENT:
+							type = " COMMENT ";
+							break;
+						case DecafLexer.P_RESERV:
+							type = " P_RESERV ";
+							break;
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}
