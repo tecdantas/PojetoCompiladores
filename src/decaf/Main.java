@@ -34,17 +34,17 @@ class Main {
 		        			case DecafLexer.ID:
 		        				type = " IDENTIFIER";
 		        				break;
+						case DecafLexer.OPERADORES:
+							type = " ";
+							break;
 						case DecafLexer.CHAR:
 		        				type = " CHARLETERAL";
 		        				break;
 						case DecafLexer.STRING:
 		        				type = " STRING";
 		        				break;
-						case DecafLexer.NUMHEX:
-							type = " HEXLITERAL ";
-							break;
-						case DecafLexer.NUMINT:
-		        				type = " INTLITERAL";
+						case DecafLexer.NUMEROS:
+		        				type = "";
 		        				break;
 						case DecafLexer.SL_COMMENT:
 							type = " COMMENT ";
@@ -52,6 +52,7 @@ class Main {
 						case DecafLexer.P_RESERV:
 							type = " P_RESERV ";
 							break;
+						
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}

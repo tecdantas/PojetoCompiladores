@@ -21,29 +21,31 @@ CLOSE_PAREN : ')';
 LCURLY : '{';
 RCURLY : '}';
 
+
+
+ID  : ('a'..'z' | 'A'..'Z')+;
+
 WS_ : (' ' | '\n' ) -> skip;
 
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
 
-CHAR_LITERAL : '\'' (ESC|CHAR) '\'';
-
-CHAR : (']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\');
+CHAR : ']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\';
 
 STRING : '"' (ESC|~'"')* '"';
 
 P_RESERV :  ('boolean' | 'break' | 'callout' | 'class' | 'continue' | 'if' | 'else' | 'false' | 'for' | 'int' | 'float' | 'return' | 'true' | 'void');
 
-OPERADORES : ('+' | '-' | '*' | '/' | '<' | '>' | '<=' | '>=' | '==' | '!=' | '&&');
+OP_ARITMETICOS : ('+' | '-' | '*' | '/');
+
+OP_RELACIONAIS : ('<' | '>' | '<=' | '>=' | '==' | '!=');
 
 OP_ATRIBUICAO : ('=');
 
 DELIMITADORES : ';' | ',';
 
-NUMEROS : [0-9]+ | HEX;
+NUMINT : [0-9]+ | NUMHEX;
 
-HEX : '0'[xX][0-9a-fA-F]+;
-
-ID  : ('a'..'z' | 'A'..'Z' | NUMEROS)+;
+NUMHEX : '0'[xX][0-9a-fA-F]+;
 
 fragment
 ESC : '\\' ('n'|'"');
