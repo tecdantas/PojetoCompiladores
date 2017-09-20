@@ -14,36 +14,39 @@ tokens
   TK_class
 }
 
-
 OPEN_PAREN : '(';
 CLOSE_PAREN : ')';
 
 LCURLY : '{';
 RCURLY : '}';
 
+//CARACT_ESP : ('(' | ')' | '[' | ']' | '{' | '}');
+
+ID  : ('a'..'z' | 'A'..'Z')+;
+
 WS_ : (' ' | '\n' ) -> skip;
 
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
 
-CHAR_LITERAL : '\'' (ESC|CHAR) '\'';
-
-CHAR : (']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\');
+CHAR : '\'' (ESC|~'\'') '\'';
 
 STRING : '"' (ESC|~'"')* '"';
-
 P_RESERV :  ('boolean' | 'break' | 'callout' | 'class' | 'continue' | 'if' | 'else' | 'false' | 'for' | 'int' | 'float' | 'return' | 'true' | 'void');
 
-OPERADORES : ('+' | '-' | '*' | '/' | '<' | '>' | '<=' | '>=' | '==' | '!=' | '&&');
-
+OP_ARITMETICOS : ('+' | '-' | '*' | '/'):
+OP_RELACIONAIS : ('<' | '>' | '<=' | '>=' | '==' | '!=');
 OP_ATRIBUICAO : ('=');
 
-DELIMITADORES : ';' | ',';
+//DELIMITADORES : ';' | ',';
 
-NUMEROS : [0-9]+ | HEX;
+//OP_ADD : '+';
+//OP_SUB : '-';
+//OP_MUL : '*';
+//OP_DIV : '/';
 
-HEX : '0'[xX][0-9a-fA-F]+;
+NUMERO : [0-9]+;
 
-ID  : ('a'..'z' | 'A'..'Z' | NUMEROS)+;
+
 
 fragment
-ESC : '\\' ('n'|'"');
+ESC :  '\\' ('n'|'"');
