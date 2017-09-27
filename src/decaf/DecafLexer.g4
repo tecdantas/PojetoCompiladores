@@ -21,29 +21,33 @@ CLOSE_PAREN : ')';
 LCURLY : '{';
 RCURLY : '}';
 
-WS_ : (' ' | '\n' ) -> skip;
-
-SL_COMMENT : '//' (~'\n')* '\n' -> skip;
-
 CHAR_LITERAL : '\'' (ESC|CHAR) '\'';
 
-CHAR : (']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\');
+fragment CHAR : (']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\' | DIGIT);
 
-STRING : '"' (ESC|~'"')* '"';
+STRING : '"' (ESC|CHAR)+ '"';
 
 P_RESERV :  ('boolean' | 'break' | 'callout' | 'class' | 'continue' | 'if' | 'else' | 'false' | 'for' | 'int' | 'float' | 'return' | 'true' | 'void');
 
 OPERADORES : ('+' | '-' | '*' | '/' | '<' | '>' | '<=' | '>=' | '==' | '!=' | '&&');
 
-OP_ATRIBUICAO : ('=');
+//OP_ATRIBUICAO : ('=');
 
-DELIMITADORES : ';' | ',';
+//DELIMITADORES : ';' | ',';
 
-NUMEROS : [0-9]+ | HEX;
+NUMEROS : DIGIT | HEX;
 
-HEX : '0'[xX][0-9a-fA-F]+;
+fragment HEX : '0'[xX][0-9a-fA-F]+;
 
 ID  : ('a'..'z' | 'A'..'Z' | NUMEROS)+;
 
-fragment
-ESC : '\\' ('n'|'"');
+//NEWLINE : '\r' ? '\n';      //novo*****
+
+
+WS_ : (' ' | '\n' | '\r' | '\t' )+ -> skip;
+SL_COMMENT : '//' (~'\n')* '\n' -> skip;
+
+fragment DIGIT : [0-9]+;
+
+fragment ESC : '\\' ('n'|'"' | '\'');
+
