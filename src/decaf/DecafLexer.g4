@@ -16,38 +16,37 @@ tokens
 
 
 OPEN_PAREN : '(';
+
 CLOSE_PAREN : ')';
 
 LCURLY : '{';
+
 RCURLY : '}';
 
-CHAR_LITERAL : '\'' (ESC|CHAR) '\'';
+BOOLEAN :  ('false' | 'true');
 
-fragment CHAR : (']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\' | DIGIT);
+//CHAR_LITERAL : '\''(ESC|CARACTERE|DIGIT|ESPECIAL|'\t')'\'';
 
-STRING : '"' (ESC|CHAR)+ '"';
+//STRING : '"'(ESC|CARACTERE|DIGIT|ESPECIAL|ARITMETICOS|COMPARACAO|LOGICO|OPERADORES|'\\'|~('"'))*'"';
 
-P_RESERV :  ('boolean' | 'break' | 'callout' | 'class' | 'continue' | 'if' | 'else' | 'false' | 'for' | 'int' | 'float' | 'return' | 'true' | 'void');
+P_RESERV :  ('boolean' | 'break' | 'callout' | 'class' | 'continue' | 'if' | 'else' | 'for' | 'int' | 'float' | 'return' |  'void' | BOOLEAN);
 
-OPERADORES : ('+' | '-' | '*' | '/' | '<' | '>' | '<=' | '>=' | '==' | '!=' | '&&');
-
-//OP_ATRIBUICAO : ('=');
-
-//DELIMITADORES : ';' | ',';
+OPERADORES : (ARITMETICOS|COMPARACAO|LOGICO|ESPECIAL);
 
 NUMEROS : DIGIT | HEX;
 
-fragment HEX : '0'[xX][0-9a-fA-F]+;
+HEX:           '0x'(DIGIT|'a'..'f'|'A'..'F')+;
 
-ID  : ('a'..'z' | 'A'..'Z' | NUMEROS)+;
-
-//NEWLINE : '\r' ? '\n';      //novo*****
-
+ID: [_a-zA-Z][0-9_a-zA-Z]*;
 
 WS_ : (' ' | '\n' | '\r' | '\t' )+ -> skip;
+
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
-
+fragment CARACTERE : [a-zA-Z];
 fragment DIGIT : [0-9]+;
-
 fragment ESC : '\\' ('n'|'"' | '\'');
+fragment ARITMETICOS: ('+'|'-'|'*'|'/');
+fragment ESPECIAL: ('!' | '#'|'$' | '%' | '&' | '(' | ')' | '*' | '+' | ',' | '-'| '.'| ';'|':'|'>'|'='|'<'|'?'|'@'| '[' |']'|'^'|'_'|'{'|'}'|'~');
+fragment COMPARACAO: ('>'|'<'|'>='|'<='|'=='|'==='|'!=');
+fragment LOGICO : ('&&'|'||');
 

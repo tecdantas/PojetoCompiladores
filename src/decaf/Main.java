@@ -43,25 +43,33 @@ class Main {
 						case DecafLexer.CHAR_LITERAL:
 		        				type = " CHARLITERAL ";
 		        				break;
+
 						case DecafLexer.STRING:
 		        				type = " STRINGLITERAL ";
 		        				break;
+
 						case DecafLexer.NUMEROS:
 		        				type = " INTLITERAL ";
 		        				break;
 						
 						case DecafLexer.P_RESERV:
-							type = " P_RESERV ";
+							type = " ";
 							break;
+						case DecafLexer.BOOLEAN:
+							type = " BOOLEANLITERAL";
+
 						case DecafLexer.OPERADORES:
-							type = " OPERATOR ";
+							type = " ";
 							break;
+
 						//case DecafLexer.SL_COMMENT:
 						//	type = " COMMENT ";
 						//	break;
+
 						case DecafLexer.ID:
 		        				type = " IDENTIFIER ";
 		        				break;
+
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}

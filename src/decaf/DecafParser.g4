@@ -11,3 +11,4 @@ options
 }
 
 program: TK_class ID LCURLY RCURLY EOF;
+
