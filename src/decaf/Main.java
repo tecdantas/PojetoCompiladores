@@ -5,7 +5,6 @@ import java.io.*;
 import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -13,7 +12,6 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.gui.TreeViewer;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-
 import java6035.tools.CLI.*;
 
 class Main {
@@ -55,16 +53,13 @@ class Main {
 						case DecafLexer.P_RESERV:
 							type = " ";
 							break;
-						case DecafLexer.BOOLEAN:
-							type = " BOOLEANLITERAL";
+
 
 						case DecafLexer.OPERADORES:
 							type = " ";
 							break;
-
-						//case DecafLexer.SL_COMMENT:
-						//	type = " COMMENT ";
-						//	break;
+						case DecafLexer.BOOLEAN:
+							type = " BOOLEANLITERAL";
 
 						case DecafLexer.ID:
 		        				type = " IDENTIFIER ";
@@ -109,7 +104,7 @@ class Main {
                     panel.add(viewr);
                     frame.add(panel);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    frame.setSize(200,200);
+                    frame.setSize(2024,800);
                     frame.setVisible(true);
                 }
 
