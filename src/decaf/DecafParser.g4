@@ -67,11 +67,11 @@ id: ID;
 
 decimal_literal: DIGIT;
 
-hex_digit: HEX;
-
-int_literal: decimal_literal | hex_digit;
+//hex_digit: HEX;
 
 hex_literal: HEX;
+
+int_literal: decimal_literal | hex_literal;
 
 bool_literal: FALSO|VERDADE;
 

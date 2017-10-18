@@ -49,7 +49,9 @@ LIMBO: 'void';
 
 BOOLEAN :  ('false' | 'true');
 
-CHAR_LITERAL : '\''(ESC|CARACTERE|DIGIT|ESPECIAL|'\t')'\'';
+CHAR_LITERAL : '\''(ESC|CHAR|CARACTERE|DIGIT|ESPECIAL|'\t');
+
+fragment CHAR : (']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\' | DIGIT);
 
 STRING : '"'(ESC|CARACTERE|DIGIT|ESPECIAL|ARITMETICOS|COMPARACAO|LOGICO|OPERADORES|'\\'|~('"'))*'"';
 
