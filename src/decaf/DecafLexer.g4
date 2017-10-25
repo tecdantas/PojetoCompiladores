@@ -51,21 +51,13 @@ BOOLEAN :  ('false' | 'true');
 
 CHAR_LITERAL : '\''(ESC|CHAR|CARACTERE|DIGIT|ESPECIAL|'\t');
 
-fragment CHAR : (']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\' | DIGIT);
-
 STRING : '"'(ESC|CARACTERE|DIGIT|ESPECIAL|ARITMETICOS|COMPARACAO|LOGICO|OPERADORES|'\\'|~('"'))*'"';
 
 P_RESERV :  ('boolean' | 'break' | 'callout' | 'class' | 'continue' | 'if' | 'else' | 'for' | 'int' | 'float' | 'return' |  'void' | BOOLEAN);
 
 OPERADORES : (ARITMETICOS|COMPARACAO|LOGICO|ESPECIAL);
 
-DIGIT : [0-9]+;
-
 NUMEROS : DIGIT | HEX;
-
-HEX:           '0x'(DIGIT|'a'..'f'|'A'..'F')+;
-
-//HEXD: DIGIT [0-9a-fA-F];
 
 COMPARACAO: ('>'|'<'|'>='|'<='|'=='|'==='|'!=');
 
@@ -75,15 +67,21 @@ LOGICO : ('&&'|'||');
 
 ARITMETICOS: ('+'|'-'|'*'|'/');
 
-//ID: [_a-zA-Z][0-9_a-zA-Z]*;
 ID: ( '_' | CARACTERE) (DIGIT|CARACTERE|'_' )*;
 
 WS_ : (' ' | '\n' | '\r' | '\t' )+ -> skip;
 
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
 
+fragment CHAR : (']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\' | DIGIT);
+
+fragment DIGIT : [0-9]+;
+
+fragment HEX: '0x'(DIGIT|'a'..'f'|'A'..'F')+;
+
 fragment CARACTERE : [a-zA-Z];
 
 fragment ESC : '\\' ('n'|'"' | '\'');
 
-fragment ESPECIAL: ('!' | '#'|'$' | '%' | '&' | '(' | ')' | '*' | '+' | ',' | '-'| '.'| ';'|':'|'>'|'='|'<'|'?'|'@'| '[' |']'|'^'|'_'|'{'|'}'|'~');
+fragment ESPECIAL: ('!' | '#'|'$' | '%' | '&' |':'|'>'|'='|'<'|'?'|'@'| '[' |']'|'^'|'_'|'{'|'}'|'~');
+

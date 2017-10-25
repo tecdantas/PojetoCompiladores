@@ -47,7 +47,7 @@ class Main {
 		        				break;
 
 						case DecafLexer.NUMEROS:
-		        				type = " INTLITERAL ";
+		        				type = "  INTLITERAL ";
 		        				break;
 						
 						case DecafLexer.P_RESERV:

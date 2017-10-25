@@ -26,7 +26,7 @@ type: INTEIRO | BOOL;
 statement: location assing_op expr PVIRGULA 
 	| method_call PVIRGULA 
 	| SE (expr) block (SENAO block)?
-	| PARA ( id IGUAL expr (VIRGULA expr)? (PVIRGULA expr PVIRGULA)? block)
+	| PARA id assing_op expr VIRGULA expr block
 	| RETORNE (expr)? PVIRGULA
 	| QUEBRAR PVIRGULA
 	| CONT PVIRGULA
@@ -45,7 +45,7 @@ location: id
 expr: location
 	|method_call
 	|literal
-	|expr (OPERADORES|HIFEN) expr
+	|expr ARITMETICOS expr
 	|HIFEN expr
 	|EXCLAM expr
 	|OPEN_PAREN expr CLOSE_PAREN;
@@ -65,13 +65,11 @@ literal: int_literal | char_literal | bool_literal;
 
 id: ID;
 
-decimal_literal: DIGIT;
+//decimal_literal: DIGIT;
 
-//hex_digit: HEX;
+//hex_literal: HEX;
 
-hex_literal: HEX;
-
-int_literal: decimal_literal | hex_literal;
+int_literal: NUMEROS;
 
 bool_literal: FALSO|VERDADE;
 
