@@ -14,58 +14,72 @@ tokens
   TK_class
 }
 
-OPEN_PAREN : '(';
+OPEN_PAREN 	: '(' ;
+CLOSE_PAREN 	: ')' ;
+LCURLY 		: '{' ;
+RCURLY 		: '}' ;
+LCOLCH 		: '[' ;
+RCOLCH 		: ']' ;
+PVIRGULA	: ';' ;
+VIRGULA		: ',' ;
+EXCLAM		: '!' ;
+HIFEN		: '-' ; //Pequeno traço, identico ao sinal (-) menos dos Operadores.
+IGUAL		: '=' ;
 
-CLOSE_PAREN : ')';
+PROGRAMA	: 'Program';
+SE		: 'if';
+SENAO		: 'else';
+BOOL		: 'boolean';
+QUEBRAR		: 'break';
+CHAMARFORA	: 'callout';
+CLASSE		: 'class';
+CONT		: 'continue';
+PARA		: 'for';
+INTEIRO		: 'int';
+RETORNE		: 'return';
+VERDADE		: 'true';
+FALSO		: 'false';
+LIMBO		: 'void';
 
-LCURLY : '{';
+BOOLEAN 	: ('false' | 'true') ;
 
-RCURLY : '}';
+CHAR_LITERAL 	: '\''(ESC|CHAR|CARACTERE|DIGIT|ESPECIAL|'\t');
 
-LCOLCH : '[';
-RCOLCH : ']';
+STRING 		: '"'(ESC|CARACTERE|DIGIT|ESPECIAL|ARITMETICOS|COMPARACAO|LOGICO|OPERADORES|'\\'|~('"'))*'"';
 
-PVIRGULA: ';';
-VIRGULA: ',';
+P_RESERV 	: ('boolean' | 'break' | 'callout' | 'class' | 'continue' | 'if' | 'else' | 'for' | 'int' | 'float' | 'return' |  'void' | BOOLEAN);
 
-EXCLAM: '!';
-HIFEN: '-'; //Pequeno traço, identico ao sinal (-) menos dos Operadores.
-IGUAL: '=';
+OPERADORES 	: (ARITMETICOS|COMPARACAO|LOGICO|ESPECIAL);
 
-PROGRAMA: 'Program';
-SE: 'if';
-SENAO: 'else';
-BOOL: 'boolean';
-QUEBRAR: 'break';
-CHAMARFORA: 'callout';
-CLASSE: 'class';
-CONT: 'continue';
-PARA: 'for';
-INTEIRO: 'int';
-RETORNE: 'return';
-VERDADE: 'true';
-FALSO: 'false';
-LIMBO: 'void';
+NUMEROS 	: DIGIT | HEX;
 
-BOOLEAN :  ('false' | 'true');
+COMPARACAO	: ('>'|'<'|'>='|'<='|'=='|'==='|'!=');
 
-CHAR_LITERAL : '\''(ESC|CHAR|CARACTERE|DIGIT|ESPECIAL|'\t');
+ASSING_OP	: ('+=' | '-=');
 
-STRING : '"'(ESC|CARACTERE|DIGIT|ESPECIAL|ARITMETICOS|COMPARACAO|LOGICO|OPERADORES|'\\'|~('"'))*'"';
+LOGICO 		: ('&&'|'||');
 
-P_RESERV :  ('boolean' | 'break' | 'callout' | 'class' | 'continue' | 'if' | 'else' | 'for' | 'int' | 'float' | 'return' |  'void' | BOOLEAN);
+ARITMETICOS	: ('+'|'-'|'*'|'/');
 
-OPERADORES : (ARITMETICOS|COMPARACAO|LOGICO|ESPECIAL);
+//conforme consta no proj do professor(foto)
+//INC		: '++' ;
+//DEC		: '--' ;
+//ADD		: '+'  ;
+//SUB		: '-'  ;
+//MUL		: '*'  ;
+//DIV		: '/'  ;
+//BIT_AND	: '&'  ;
+//BIT_OR	: '|'  ;
+//MOD		: '%'  ;
+//EXCL		: '!'  ;
 
-NUMEROS : DIGIT | HEX;
-
-COMPARACAO: ('>'|'<'|'>='|'<='|'=='|'==='|'!=');
-
-ASSING_OP: ('+=' | '-=');
-
-LOGICO : ('&&'|'||');
-
-ARITMETICOS: ('+'|'-'|'*'|'/');
+//Separadores
+//LPAREN	: '('  ;
+//RPAREN	: ')'  ;
+//LBRACE	: '{'  ;
+//RBRACE	: '}'  ;
+//SEMI		: '['  ;
+//COMMA		: ']'  ;
 
 ID: ( '_' | CARACTERE) (DIGIT|CARACTERE|'_' )*;
 

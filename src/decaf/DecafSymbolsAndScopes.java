@@ -14,7 +14,7 @@ import org.antlr.v4.runtime.tree.ParseTreeProperty;
 /**
  * This class defines basic symbols and scopes for Decaf language
  */
-public class DecafSymbolsAndScopes extends DecafParserBaseListener {
+    public class DecafSymbolsAndScopes extends DecafParserBaseListener {
     ParseTreeProperty<Scope> scopes = new ParseTreeProperty<Scope>();
     GlobalScope globals;
     Scope currentScope; // define symbols in this scope
