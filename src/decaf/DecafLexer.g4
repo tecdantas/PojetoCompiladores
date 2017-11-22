@@ -39,7 +39,7 @@ INTEIRO		: 'int';
 RETORNE		: 'return';
 VERDADE		: 'true';
 FALSO		: 'false';
-LIMBO		: 'void';
+VOID		: 'void';
 
 BOOLEAN 	: ('false' | 'true') ;
 
@@ -61,6 +61,27 @@ LOGICO 		: ('&&'|'||');
 
 ARITMETICOS	: ('+'|'-'|'*'|'/');
 
+ID: ( '_' | CARACTERE) (DIGIT|CARACTERE|'_' )*;
+
+WS_ : (' ' | '\n' | '\r' | '\t' )+ -> skip;
+
+SL_COMMENT : '//' (~'\n')* '\n' -> skip;
+
+fragment CHAR : (']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\' | DIGIT);
+
+fragment DIGIT : [0-9]+;
+
+fragment HEX: '0x'(DIGIT|'a'..'f'|'A'..'F')+;
+
+fragment CARACTERE : [a-zA-Z];
+
+fragment ESC : '\\' ('n'|'"' | '\'');
+
+fragment ESPECIAL: ('!' | '#'|'$' | '%' | '&' |':'|'>'|'='|'<'|'?'|'@'| '[' |']'|'^'|'_'|'{'|'}'|'~');
+
+
+
+
 //conforme consta no proj do professor(foto)
 //INC		: '++' ;
 //DEC		: '--' ;
@@ -80,22 +101,4 @@ ARITMETICOS	: ('+'|'-'|'*'|'/');
 //RBRACE	: '}'  ;
 //SEMI		: '['  ;
 //COMMA		: ']'  ;
-
-ID: ( '_' | CARACTERE) (DIGIT|CARACTERE|'_' )*;
-
-WS_ : (' ' | '\n' | '\r' | '\t' )+ -> skip;
-
-SL_COMMENT : '//' (~'\n')* '\n' -> skip;
-
-fragment CHAR : (']'..'~' | '#'..'&' | '('..'[' | ' ' | '!' | '\\t' | '\\\\' | DIGIT);
-
-fragment DIGIT : [0-9]+;
-
-fragment HEX: '0x'(DIGIT|'a'..'f'|'A'..'F')+;
-
-fragment CARACTERE : [a-zA-Z];
-
-fragment ESC : '\\' ('n'|'"' | '\'');
-
-fragment ESPECIAL: ('!' | '#'|'$' | '%' | '&' |':'|'>'|'='|'<'|'?'|'@'| '[' |']'|'^'|'_'|'{'|'}'|'~');
 
