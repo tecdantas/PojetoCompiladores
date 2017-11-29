@@ -59,11 +59,24 @@ ASSING_OP	: ('+=' | '-=');
 
 LOGICO 		: ('&&'|'||');
 
-ARITMETICOS	: ('+'|'-'|'*'|'/');
+ARITMETICOS	: ('ADD'|'SUB'|'MUL'|'DIV');
+
+//conforme consta no proj do professor Eduardo(fotoCelular)
+INCREM		: '++' ;
+DECREM		: '--' ;
+ADD		: '+'  ;
+SUB		: '-'  ;
+MUL		: '*'  ;
+DIV		: '/'  ;
+BIT_AND		: '&'  ;
+BIT_OR		: '|'  ;
+MOD		: '%'  ;
+//EXCL		: '!'  ;
+
 
 ID: ( '_' | CARACTERE) (DIGIT|CARACTERE|'_' )*;
 
-WS_ : (' ' | '\n' | '\r' | '\t' )+ -> skip;
+fragment WS : (' ' | '\n' | '\r' | '\t' )+ -> skip;
 
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
 
@@ -77,28 +90,5 @@ fragment CARACTERE : [a-zA-Z];
 
 fragment ESC : '\\' ('n'|'"' | '\'');
 
-fragment ESPECIAL: ('!' | '#'|'$' | '%' | '&' |':'|'>'|'='|'<'|'?'|'@'| '[' |']'|'^'|'_'|'{'|'}'|'~');
-
-
-
-
-//conforme consta no proj do professor(foto)
-//INC		: '++' ;
-//DEC		: '--' ;
-//ADD		: '+'  ;
-//SUB		: '-'  ;
-//MUL		: '*'  ;
-//DIV		: '/'  ;
-//BIT_AND	: '&'  ;
-//BIT_OR	: '|'  ;
-//MOD		: '%'  ;
-//EXCL		: '!'  ;
-
-//Separadores
-//LPAREN	: '('  ;
-//RPAREN	: ')'  ;
-//LBRACE	: '{'  ;
-//RBRACE	: '}'  ;
-//SEMI		: '['  ;
-//COMMA		: ']'  ;
+fragment ESPECIAL: ('!' | '#' | '$' | '%' | '&' | ':' | '>' | '=' | '<' | '?' | '@' | '[' | ']' | '^' | '_' | '{' | '}' | '~');
 
